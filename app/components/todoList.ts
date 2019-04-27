@@ -29,22 +29,49 @@ export const create = b.createComponent<IContext>({
                 b.styledDiv('Todo List', labelStyle),
                 b.styledDiv(
                     ctx.tasks.map((task, i) =>
-                    b.styledDiv(
-                        m.Checkbox({
-                            children: getTaskView(task),
-                            checked: task.isDone,
-                            action: () => {
-                                task.isDone = !task.isDone;
-                                b.invalidate(ctx);
-                            }
-                        })
-                    )
-                    )
-                )
-            ]
+                        b.styledDiv(
+                            m.Checkbox({
+                                children: getTaskView(task),
+                                checked: task.isDone,
+                                action: () => {
+                                    task.isDone = !task.isDone;
+                                    b.invalidate(ctx);
+                                }
+                            }),
+                            taskStyle
+                        )
+                    ),
+                    taskListStyle
+                ),
+                m.TextField({
+                    hintText: "New task description",
+                    value: ctx.newTask.description,
+                    onChange: (value: string) => {
+                        ctx.newTask.description = value;
+                        b.invalidate(ctx);
+                    }
+                }),
+                m.Button({
+                    children: "Add Task",
+                    type: m.ButtonType.Raised,
+                    feature: m.Feature.Secondary,
+                    disabled: isActualTaskEmpty(ctx),
+                    action: () => {
+                        if (!isActualTaskEmpty(ctx)) {
+                            ctx.tasks = [ctx.newTask, ...ctx.tasks];
+                            ctx.newTask = createTask("", false);
+                            b.invalidate(ctx);
+                        }
+                    }
+                })
+            ],
+            style: {
+                margin: margin,
+                padding: padding
+            }
         });
     }
-})
+});
 
 function createTask(description: string, isDone: boolean) {
     return {description, isDone}
@@ -57,6 +84,11 @@ function getTaskView(task: ITask): b.IBobrilChildren {
     );
 }
 
+function isActualTaskEmpty(ctx: IContext): boolean {
+    return ctx.newTask.description.trim() === '';
+}
+
+const margin = 16;
 const padding = 16;
 const taskListHeight = 120;
 const taskListStyle = b.styleDef({
