@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bobril": "^10.1.2"
+    "bobril": "^10.1.2",
+    "bobril-m": "^0.15.0"
   }
 }
