@@ -1,5 +1,5 @@
 import * as b from 'bobril';
-import * as Counter from './counter';
+import * as Counter from './components/counter';
 
 b.init(() => {
     return {tag: 'div', children: [
