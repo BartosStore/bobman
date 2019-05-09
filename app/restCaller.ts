@@ -10,7 +10,7 @@ class RestCallerCtxStore extends b.BobrilCtx<IData> {
     constructor(data: IData) {
         super(data);
     }
-
+    
     pageText = (): string => {
         return this._pageText;
     }
