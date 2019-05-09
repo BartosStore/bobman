@@ -1,20 +1,8 @@
 import * as b from "bobril";
 import { Button } from "../components/button";
+import { RestCallerCtxStore } from "./restCallerCtxStore";
 
-interface IData {}
-
-class RestCallerCtxStore extends b.BobrilCtx<IData> {
-    private _pageText: string = "Simple empty page.";
-    private _url: string = "https://api.github.com/repos/BartosStore/HeatingProject/contributors";
-
-    constructor(data: IData) {
-        super(data);
-    }
-    
-    pageText = (): string => {
-        return this._pageText;
-    }
-}
+export interface IData {}
 
 export const RestCaller = b.createComponent({
     id: "rest-caller",
