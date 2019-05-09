@@ -2,7 +2,7 @@ import * as b from 'bobril';
 import { pageMain } from './pageMain';
 import { pageCounter } from './pageCounter';
 import { PageTodoList } from './pageTodoList';
-import { RestCaller } from './restCaller';
+import { RestCaller } from './restCaller/restCaller';
 
 b.routes(
     b.route({handler: pageMain}, [

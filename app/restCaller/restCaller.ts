@@ -1,5 +1,5 @@
 import * as b from "bobril";
-import { Button } from "./components/button";
+import { Button } from "../components/button";
 
 interface IData {}
 
