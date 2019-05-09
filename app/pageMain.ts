@@ -23,7 +23,7 @@ export const pageMain = b.createComponent({
             Button({
                 caption: "Simple Page",
                 onHit: () => {
-                    b.runTransition(b.createRedirectPush("simple"));
+                    b.runTransition(b.createRedirectPush("rest"));
                     return true
                 }
             }),
