@@ -10,6 +10,7 @@ interface IButtonCtx extends b.IBobrilCtx {
 }
 
 export const Button = b.createComponent({
+    id: "custom-button",
     render(ctx: IButtonCtx, me: b.IBobrilNode): void {
         me.tag = "button";        
         me.children = ctx.data.caption;        

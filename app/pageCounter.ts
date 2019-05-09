@@ -3,6 +3,7 @@ import * as Counter from './components/counter';
 import { Button } from './components/button';
 
 export const pageCounter = b.createComponent({
+    id: "counter",
     render(ctx: b.IBobrilCtx, me: b.IBobrilNode): void {
         me.children = [
             {tag: 'h1', children: 'Counter', },
