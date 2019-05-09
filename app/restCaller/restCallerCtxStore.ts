@@ -1,5 +1,5 @@
 import * as b from 'bobril';
-import { IData } from './restCaller';
+import { IData } from './restCallerTypes';
 
 export class RestCallerCtxStore extends b.BobrilCtx<IData> {
     private _pageText: string = "Simple empty page.";

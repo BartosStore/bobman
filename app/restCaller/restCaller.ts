@@ -2,8 +2,6 @@ import * as b from "bobril";
 import { Button } from "../components/button";
 import { RestCallerCtxStore } from "./restCallerCtxStore";
 
-export interface IData {}
-
 export const RestCaller = b.createComponent({
     id: "rest-caller",
     ctxClass: RestCallerCtxStore,
