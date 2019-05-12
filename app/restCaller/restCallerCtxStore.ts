@@ -35,4 +35,8 @@ export class RestCallerCtxStore extends b.BobrilCtx<IData> {
     contributorUrl = (): string => {
         return this._contributors[0] !== undefined ? this._contributors[0].url : "";
     }
+
+    contributors = (): IContributor[] => {
+        return this._contributors;
+    }
 }

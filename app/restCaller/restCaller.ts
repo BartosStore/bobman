@@ -11,7 +11,9 @@ export const RestCaller = b.createComponent({
             {tag: "h1", children: "Simple Page"},
             {tag: "p", children: "Simple empty page." },
             // todo: render component for each contributor
-            Contributor({ login: ctx.contributorLogin(), url: ctx.contributorUrl() }),
+            ctx.contributors().map(c => 
+                Contributor({ login: c.login, url: c.url, contributions: c.contributions }), 
+            ),
             Button({
                 caption: "Next page",
                 onHit: () => {
