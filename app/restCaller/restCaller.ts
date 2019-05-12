@@ -6,10 +6,11 @@ export const RestCaller = b.createComponent({
     id: "rest-caller",
     ctxClass: RestCallerCtxStore,
     render(ctx: RestCallerCtxStore, me: b.IBobrilNode): void {
-        const text = ctx.pageText();
         me.children = [
             {tag: "h1", children: "Simple Page"},
-            {tag: "p", children: "" },
+            {tag: "p", children: "Simple empty page." },
+            {tag: "p", children: "Contributor: " + ctx.contributorLogin() },
+            {tag: "p", children: "Url: " + ctx.contributorUrl() },
             Button({
                 caption: "Next page",
                 onHit: () => {

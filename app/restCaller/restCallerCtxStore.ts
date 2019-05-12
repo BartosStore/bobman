@@ -1,15 +1,38 @@
 import * as b from 'bobril';
-import { IData } from './restCallerTypes';
+import { IData, IContributor } from './restCallerTypes';
+import { sendRequest } from '../common/restUtils';
 
 export class RestCallerCtxStore extends b.BobrilCtx<IData> {
-    private _pageText: string = "Simple empty page.";
+    private _contributors: IContributor[] = []; 
     private _url: string = "https://api.github.com/repos/BartosStore/HeatingProject/contributors";
 
     constructor(data: IData) {
         super(data);
+
+        sendRequest(
+            'GET', 
+            this._url, 
+            (contributors: IContributor[]) => {
+                contributors.forEach((c, i) => {
+                    console.log(c.login);
+                    this._contributors.push({
+                        id: contributors[i].id,
+                        login: contributors[i].login,
+                        url: contributors[i].url,
+                        type: contributors[i].type,
+                        contributions: contributors[i].contributions
+                    })
+                });
+                console.log("this._contributors: ", this._contributors);
+            }
+        );
     }
     
-    pageText = (): string => {
-        return this._pageText;
+    contributorLogin = (): string => {
+        return this._contributors[0] !== undefined ? this._contributors[0].login : "x";
+    }
+
+    contributorUrl = (): string => {
+        return this._contributors[0] !== undefined ? this._contributors[0].url : "";
     }
 }
