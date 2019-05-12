@@ -13,7 +13,6 @@ export class RestCallerCtxStore extends b.BobrilCtx<IData> {
             this._url, 
             (contributors: IContributor[]) => {
                 contributors.forEach((c, i) => {
-                    console.log(c.login);
                     this._contributors.push({
                         id: contributors[i].id,
                         login: contributors[i].login,
@@ -27,11 +26,11 @@ export class RestCallerCtxStore extends b.BobrilCtx<IData> {
     }
     
     contributorLogin = (): string => {
-        return this._contributors[0] !== undefined ? this._contributors[0].login : "x";
+        return this._contributors[0] !== undefined ? this._contributors[0].login : "-";
     }
 
     contributorUrl = (): string => {
-        return this._contributors[0] !== undefined ? this._contributors[0].url : "";
+        return this._contributors[0] !== undefined ? this._contributors[0].url : "-";
     }
 
     contributors = (): IContributor[] => {

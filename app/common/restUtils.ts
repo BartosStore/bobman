@@ -23,7 +23,7 @@ export function sendRequest<Request, Response>(
     
     request.onload = function() {
         if (this.status >= 200 && this.status < 400) {
-            console.log("status: " + this.status);
+            // console.log("status: " + this.status);
             // const data = this.response as Response;
             const data = JSON.parse(this.response) as Response;
             callback && callback(data);
