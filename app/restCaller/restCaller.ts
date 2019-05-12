@@ -10,6 +10,7 @@ export const RestCaller = b.createComponent({
         me.children = [
             {tag: "h1", children: "Simple Page"},
             {tag: "p", children: "Simple empty page." },
+            // todo: render component for each contributor
             Contributor({ login: ctx.contributorLogin(), url: ctx.contributorUrl() }),
             Button({
                 caption: "Next page",

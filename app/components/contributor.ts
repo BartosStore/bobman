@@ -15,6 +15,7 @@ export const Contributor = b.createComponent({
         me.children = [
             {tag: "p", children: "Contributor: " + ctx.data.login },
             {tag: "p", children: "Url: " + ctx.data.url }
-        ]
+        ],
+        me.style = { backgroundColor: "#fcf111", padding: 10 }
     }
 });
