@@ -1,3 +1,16 @@
+// todo: try promises
+/* 
+function request2<Request, Response>(
+    method: 'GET' | 'POST',
+    url: string,
+    content?: Request
+): Promise<Response> {
+    return new Promise<Response>((resolve, reject) => {
+        request(method, url, content, resolve, reject);
+    });
+}
+*/ 
+
 export function sendRequest<Request, Response>(
     method: 'GET' | 'POST', 
     url: string, 

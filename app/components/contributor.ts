@@ -10,6 +10,7 @@ interface IContributorContext extends b.IBobrilCtx {
 }
 
 export const Contributor = b.createComponent({
+    id: "contributor",
     render(ctx: IContributorContext, me: b.IBobrilNode): void {
         me.children = [
             {tag: "p", children: "Contributor: " + ctx.data.login },
