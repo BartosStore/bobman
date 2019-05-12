@@ -1,6 +1,7 @@
 import * as b from "bobril";
-import { Button } from "../components/button";
 import { RestCallerCtxStore } from "./restCallerCtxStore";
+import { Button } from "../components/button";
+import { Contributor } from "../components/contributor";
 
 export const RestCaller = b.createComponent({
     id: "rest-caller",
@@ -9,8 +10,7 @@ export const RestCaller = b.createComponent({
         me.children = [
             {tag: "h1", children: "Simple Page"},
             {tag: "p", children: "Simple empty page." },
-            {tag: "p", children: "Contributor: " + ctx.contributorLogin() },
-            {tag: "p", children: "Url: " + ctx.contributorUrl() },
+            Contributor({ login: ctx.contributorLogin(), url: ctx.contributorUrl() }),
             Button({
                 caption: "Next page",
                 onHit: () => {
