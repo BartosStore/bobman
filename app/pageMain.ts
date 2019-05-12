@@ -5,7 +5,7 @@ export const pageMain = b.createComponent({
     render(_ctx: b.IBobrilCtx, me: b.IBobrilNode): void {
         me.children = [
             {tag: 'h1', children: 'Bobman', },
-            {tag: 'p', children: 'This is page wrapper.'},
+            // {tag: 'p', children: 'This is page wrapper.'},
             Button({
                 caption: "Counter",
                 onHit: () => {
@@ -21,7 +21,7 @@ export const pageMain = b.createComponent({
                 }
             }),
             Button({
-                caption: "Simple Page",
+                caption: "Github",
                 onHit: () => {
                     b.runTransition(b.createRedirectPush("rest"));
                     return true
@@ -30,7 +30,7 @@ export const pageMain = b.createComponent({
             {tag: 'hr'},
             {tag: 'div', children: me.data.activeRouteHandler(), style: {backgroundColor: "#fcfcbd", padding: 10 }},
             {tag: 'hr'},
-            {tag: 'p', children: 'End of wrapper.'},
+            // {tag: 'p', children: 'End of wrapper.'},
         ],
         me.style = {
             margin: 10

@@ -8,7 +8,6 @@ export class RestCallerCtxStore extends b.BobrilCtx<IData> {
 
     constructor(data: IData) {
         super(data);
-
         sendRequest(
             'GET', 
             this._url, 
@@ -23,7 +22,6 @@ export class RestCallerCtxStore extends b.BobrilCtx<IData> {
                         contributions: contributors[i].contributions
                     })
                 });
-                console.log("this._contributors: ", this._contributors);
             }
         );
     }

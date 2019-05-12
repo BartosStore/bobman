@@ -8,9 +8,8 @@ export const RestCaller = b.createComponent({
     ctxClass: RestCallerCtxStore,
     render(ctx: RestCallerCtxStore, me: b.IBobrilNode): void {
         me.children = [
-            {tag: "h1", children: "Simple Page"},
-            {tag: "p", children: "Simple empty page." },
-            // todo: render component for each contributor
+            {tag: "h1", children: "Github"},
+            {tag: "p", children: "Data from HeatingProject." },
             ctx.contributors().map(c => 
                 Contributor({ login: c.login, url: c.url, contributions: c.contributions }), 
             ),

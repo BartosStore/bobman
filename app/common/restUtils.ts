@@ -43,11 +43,11 @@ export function sendRequest<Request, Response>(
     };
 
     request.onloadstart = function() {
-        console.log("request load started");
+        // console.log("request load started");
     }
 
     request.onloadend = function() {
-        console.log("request load ended");
+        // console.log("request load ended");
     }
 
     if (method === 'POST') {
