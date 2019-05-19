@@ -1,4 +1,5 @@
 import * as b from 'bobril';
+import { observable } from 'bobx';
 import { IData, IContributor } from './restCallerMobXTypes';
 import { sendRequest } from '../common/restUtils';
 
@@ -8,8 +9,8 @@ import { sendRequest } from '../common/restUtils';
  * update of page is ensured via MobX
  */
 export class RestCallerCtxStore extends b.BobrilCtx<IData> {
-    private _repository: string = "";
-    private _contributors: IContributor[] = []; 
+    @observable private _repository: string = "";
+    @observable private _contributors: IContributor[] = []; 
     private _heatingProjectUrl: string = "https://api.github.com/repos/BartosStore/HeatingProject/contributors";
     private _eulerDojoUrl: string = "https://api.github.com/repos/vsobotka/euler-dojo/contributors";
 

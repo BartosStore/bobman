@@ -10,7 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "bobril": "^10.1.2",
-    "bobril-m": "^0.15.0"
+    "bobril-m": "^0.15.0",
+    "bobx": "^0.27.1"
   },
   "devDependencies": {
     "typescript": "^3.4.5",
