@@ -11,5 +11,17 @@
   "dependencies": {
     "bobril": "^10.1.2",
     "bobril-m": "^0.15.0"
+  },
+  "devDependencies": {
+    "typescript": "^3.4.5",
+    "tslint": "^5.16.0",
+    "bb-tslint-plugin": "^1.2.2",
+    "prettier": "^1.17.1"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 4,
+    "semi": false,
+    "singleQuote": true
   }
 }
