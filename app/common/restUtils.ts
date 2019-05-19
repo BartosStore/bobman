@@ -1,6 +1,4 @@
-// todo: try promises
-/* 
-function request2<Request, Response>(
+export function sendRequest<Request, Response>(
     method: 'GET' | 'POST',
     url: string,
     content?: Request
@@ -9,13 +7,12 @@ function request2<Request, Response>(
         request(method, url, content, resolve, reject);
     });
 }
-*/ 
 
-export function sendRequest<Request, Response>(
+export function request<Request, Response>(
     method: 'GET' | 'POST', 
     url: string, 
-    callback?: (response: Response) => void, 
     content?: Request, 
+    callback?: (response: Response) => void, 
     errorCallback?: (error: any) => void
 ) {
     const request = new XMLHttpRequest();
@@ -32,7 +29,7 @@ export function sendRequest<Request, Response>(
         }
     }
 
-    request.timeout = 400;
+    request.timeout = 500;
 
     request.ontimeout = function(error) {
         console.log("ERROR: timeout ", error);

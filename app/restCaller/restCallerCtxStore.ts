@@ -8,21 +8,12 @@ export class RestCallerCtxStore extends b.BobrilCtx<IData> {
 
     constructor(data: IData) {
         super(data);
-        sendRequest(
-            'GET', 
-            this._url, 
-            (contributors: IContributor[]) => {
-                contributors.forEach((c, i) => {
-                    this._contributors.push({
-                        id: contributors[i].id,
-                        login: contributors[i].login,
-                        url: contributors[i].url,
-                        type: contributors[i].type,
-                        contributions: contributors[i].contributions
-                    })
-                });
-            }
-        );
+        let result: Promise<IContributor[]> = sendRequest('GET', this._url);
+        result.then(
+            (result: IContributor[]) => 
+                this._contributors = result
+        )
+        result.catch((reason: any) => console.log("Request error: ", reason))
     }
     
     contributorLogin = (): string => {
