@@ -6,7 +6,7 @@ import { sendRequest } from '../common/restUtils';
 /**
  * == RestCaller ==
  * rest api caller with improved data handling;
- * update of page is ensured via MobX
+ * update of page is ensured via BobX
  */
 export class RestCallerCtxStore extends b.BobrilCtx<IData> {
     @observable private _repository: string = "";
