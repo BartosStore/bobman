@@ -1,11 +1,11 @@
 import * as b from 'bobril';
-import { IData, IContributor } from './restCallerTypes';
+import { IData, IContributor } from './restCallerMobXTypes';
 import { sendRequest } from '../common/restUtils';
 
 /**
  * == RestCaller ==
- * rest api caller with simple data handling;
- * update of page is ensured via b.invalidate()
+ * rest api caller with improved data handling;
+ * update of page is ensured via MobX
  */
 export class RestCallerCtxStore extends b.BobrilCtx<IData> {
     private _repository: string = "";
@@ -41,7 +41,6 @@ export class RestCallerCtxStore extends b.BobrilCtx<IData> {
         result.then(
             (result: IContributor[]) =>  {
                 this._contributors = result
-                b.invalidate();
             }
         )
         result.catch((reason: any) => console.log("Request error: ", reason))

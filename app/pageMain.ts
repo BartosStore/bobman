@@ -27,6 +27,13 @@ export const pageMain = b.createComponent({
                     return true
                 }
             }),
+            Button({
+                caption: "Github MobX",
+                onHit: () => {
+                    b.runTransition(b.createRedirectPush("rest_mobx"));
+                    return true
+                }
+            }),
             {tag: 'hr'},
             {tag: 'div', children: me.data.activeRouteHandler(), style: {backgroundColor: "#fcfcbd", padding: 10 }},
             {tag: 'hr'},
