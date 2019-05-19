@@ -9,7 +9,15 @@ export const RestCaller = b.createComponent({
     render(ctx: RestCallerCtxStore, me: b.IBobrilNode): void {
         me.children = [
             {tag: "h1", children: "Github"},
-            {tag: "p", children: "Data from HeatingProject." },
+            Button({
+                caption:"Download Heating Project",
+                onHit: ctx.loadHeatingProjectData
+            }),
+            Button({
+                caption:"Download Euler Dojo",
+                onHit: ctx.loadEulerDojoData
+            }),
+            {tag: "p", children: "Data from Github project: " + ctx.repository() },
             ctx.contributors().map(c => 
                 Contributor({ login: c.login, url: c.url, contributions: c.contributions }), 
             ),
