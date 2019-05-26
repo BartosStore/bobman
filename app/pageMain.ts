@@ -34,6 +34,13 @@ export const pageMain = b.createComponent({
                     return true
                 }
             }),
+            Button({
+                caption: "Github Bobflux",
+                onHit: () => {
+                    b.runTransition(b.createRedirectPush("rest_bobflux"));
+                    return true;
+                }
+            }),
             {tag: 'hr'},
             {tag: 'div', children: me.data.activeRouteHandler(), style: {backgroundColor: "#fcfcbd", padding: 10 }},
             {tag: 'hr'},

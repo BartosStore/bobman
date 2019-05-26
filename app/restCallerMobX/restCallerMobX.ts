@@ -8,7 +8,7 @@ export const RestCallerMobX = b.createComponent({
     ctxClass: RestCallerCtxStore,
     render(ctx: RestCallerCtxStore, me: b.IBobrilNode): void {
         me.children = [
-            {tag: "h1", children: "Github"},
+            {tag: "h1", children: "Github page with MobX"},
             Button({
                 caption:"Download Heating Project",
                 onHit: ctx.loadHeatingProjectData
@@ -24,7 +24,7 @@ export const RestCallerMobX = b.createComponent({
             Button({
                 caption: "Next page",
                 onHit: () => {
-                    b.runTransition(b.createRedirectPush("counter"));
+                    b.runTransition(b.createRedirectPush("rest_bobflux"));
                     return true;
                 }
             })

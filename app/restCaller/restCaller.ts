@@ -8,7 +8,7 @@ export const RestCaller = b.createComponent({
     ctxClass: RestCallerCtxStore,
     render(ctx: RestCallerCtxStore, me: b.IBobrilNode): void {
         me.children = [
-            {tag: "h1", children: "Github"},
+            {tag: "h1", children: "Github page with b.invalidate()"},
             Button({
                 caption:"Download Heating Project",
                 onHit: ctx.loadHeatingProjectData
@@ -24,7 +24,7 @@ export const RestCaller = b.createComponent({
             Button({
                 caption: "Next page",
                 onHit: () => {
-                    b.runTransition(b.createRedirectPush("counter"));
+                    b.runTransition(b.createRedirectPush("rest_mobx"));
                     return true;
                 }
             })
