@@ -1,25 +1,25 @@
-import * as b from "bobril";
+import * as b from 'bobril'
 
 interface IData {
-    caption: string;
-    onHit: () => void;
+    caption: string
+    onHit: () => void
 }
 
 interface IButtonCtx extends b.IBobrilCtx {
-    data: IData;
+    data: IData
 }
 
 export const Button = b.createComponent({
-    id: "custom-button",
+    id: 'custom-button',
     render(ctx: IButtonCtx, me: b.IBobrilNode): void {
-        me.tag = "button";        
-        me.children = ctx.data.caption;        
+        me.tag = 'button'
+        me.children = ctx.data.caption
         me.style = {
-            marginRight: 10
+            marginRight: 10,
         }
     },
     onClick(ctx: IButtonCtx): boolean {
-        ctx.data.onHit();
-        return true;
-    }
-});
+        ctx.data.onHit()
+        return true
+    },
+})

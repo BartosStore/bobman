@@ -1,22 +1,22 @@
-import * as b from 'bobril';
-import * as TodoList from './components/todoList';
-import { Button } from './components/button';
+import * as b from 'bobril'
+import * as TodoList from './components/todoList'
+import { Button } from './components/button'
 
 export const PageTodoList = b.createComponent({
-    id: "todo-list",
+    id: 'todo-list',
     render(ctx: b.IBobrilCtx, me: b.IBobrilNode): void {
         me.children = [
-            {tag: 'h1', children: 'Todo List', },
-            {tag: 'p', children: 'Lets play with todo list:'},
+            { tag: 'h1', children: 'Todo List' },
+            { tag: 'p', children: 'Lets play with todo list:' },
             TodoList.create(),
-            {tag: 'br'},
+            { tag: 'br' },
             Button({
-                caption: "Next page",
+                caption: 'Next page',
                 onHit: () => {
-                    b.runTransition(b.createRedirectPush("rest"));
+                    b.runTransition(b.createRedirectPush('rest'))
                     return true
-                }
-            })
+                },
+            }),
         ]
-    }
-});
+    },
+})
