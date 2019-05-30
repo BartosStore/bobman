@@ -8,7 +8,7 @@ import { sendRequest } from '../common/restUtils'
  * rest api caller with improved data handling;
  * update of page is ensured via BobX
  */
-export class RestCallerCtxStore extends b.BobrilCtx<IData> {
+export class RestCallerCtxStore extends b.Component<IData> {
     @observable private _repository: string = ''
     @observable private _contributors: IContributor[] = []
     private _heatingProjectUrl: string =
@@ -40,7 +40,7 @@ export class RestCallerCtxStore extends b.BobrilCtx<IData> {
     }
 
     private _loadRepositoryData = (url: string) => {
-        let result: Promise<IContributor[]> = sendRequest('GET', url)
+        const result: Promise<IContributor[]> = sendRequest('GET', url)
         result.then((result: IContributor[]) => {
             this._contributors = result
         })

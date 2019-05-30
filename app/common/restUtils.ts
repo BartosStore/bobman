@@ -14,7 +14,7 @@ export function request<Request, Response>(
     content?: Request,
     callback?: (response: Response) => void,
     errorCallback?: (error: any) => void
-) {
+): void {
     const request = new XMLHttpRequest()
     request.open(method, url, true)
 

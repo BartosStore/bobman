@@ -2,10 +2,10 @@ import * as b from 'bobril'
 import * as TodoList from './components/todoList'
 import { Button } from './components/button'
 
-export const PageTodoList = b.createComponent({
-    id: 'todo-list',
-    render(ctx: b.IBobrilCtx, me: b.IBobrilNode): void {
-        me.children = [
+export class PageTodoList extends b.Component<never> {
+    static id: string = 'todo-list'
+    render(): b.IBobrilChildren {
+        return [
             { tag: 'h1', children: 'Todo List' },
             { tag: 'p', children: 'Lets play with todo list:' },
             TodoList.create(),
@@ -18,5 +18,5 @@ export const PageTodoList = b.createComponent({
                 },
             }),
         ]
-    },
-})
+    }
+}

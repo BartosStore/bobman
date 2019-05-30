@@ -2,10 +2,10 @@ import * as b from 'bobril'
 import * as Counter from './components/counter'
 import { Button } from './components/button'
 
-export const pageCounter = b.createComponent({
-    id: 'counter',
-    render(ctx: b.IBobrilCtx, me: b.IBobrilNode): void {
-        me.children = [
+export class pageCounter extends b.Component<{}> {
+    static id: string = 'counter'
+    render(): b.IBobrilChildren {
+        return [
             { tag: 'h1', children: 'Counter' },
             { tag: 'p', children: 'Lets play with counter:' },
             Counter.create(),
@@ -17,5 +17,5 @@ export const pageCounter = b.createComponent({
                 },
             }),
         ]
-    },
-})
+    }
+}

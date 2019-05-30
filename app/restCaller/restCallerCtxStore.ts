@@ -7,7 +7,7 @@ import { sendRequest } from '../common/restUtils'
  * rest api caller with simple data handling;
  * update of page is ensured via b.invalidate()
  */
-export class RestCallerCtxStore extends b.BobrilCtx<IData> {
+export class RestCallerCtxStore extends b.Component<IData> {
     private _repository: string = ''
     private _contributors: IContributor[] = []
     private _heatingProjectUrl: string =
@@ -31,6 +31,7 @@ export class RestCallerCtxStore extends b.BobrilCtx<IData> {
     loadHeatingProjectData = () => {
         this._repository = 'Heating Project'
         this._loadRepositoryData(this._heatingProjectUrl)
+        b.invalidate()
     }
 
     loadEulerDojoData = () => {
@@ -42,7 +43,7 @@ export class RestCallerCtxStore extends b.BobrilCtx<IData> {
         let result: Promise<IContributor[]> = sendRequest('GET', url)
         result.then((result: IContributor[]) => {
             this._contributors = result
-            b.invalidate()
+            b.invalidate(this)
         })
         result.catch((reason: any) => console.log('Request error: ', reason))
     }

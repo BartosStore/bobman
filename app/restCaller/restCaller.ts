@@ -3,25 +3,24 @@ import { RestCallerCtxStore } from './restCallerCtxStore'
 import { Button } from '../components/button'
 import { Contributor } from '../components/contributor'
 
-export const RestCaller = b.createComponent({
-    id: 'rest-caller',
-    ctxClass: RestCallerCtxStore,
-    render(ctx: RestCallerCtxStore, me: b.IBobrilNode): void {
-        me.children = [
+export class RestCaller extends RestCallerCtxStore {
+    static id: string = 'rest-caller'
+    render(): b.IBobrilChildren {
+        return [
             { tag: 'h1', children: 'Github page with b.invalidate()' },
             Button({
                 caption: 'Download Heating Project',
-                onHit: ctx.loadHeatingProjectData,
+                onHit: this.loadHeatingProjectData,
             }),
             Button({
                 caption: 'Download Euler Dojo',
-                onHit: ctx.loadEulerDojoData,
+                onHit: this.loadEulerDojoData,
             }),
             {
                 tag: 'p',
-                children: 'Data from Github project: ' + ctx.repository(),
+                children: 'Data from Github project: ' + this.repository(),
             },
-            ctx.contributors().map(c =>
+            this.contributors().map(c =>
                 Contributor({
                     login: c.login,
                     url: c.url,
@@ -36,5 +35,5 @@ export const RestCaller = b.createComponent({
                 },
             }),
         ]
-    },
-})
+    }
+}
