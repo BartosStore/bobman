@@ -3,9 +3,9 @@ import * as flux from 'bobflux'
 import * as monitor from 'bobflux-monitor'
 import * as m from 'bobril-m'
 import { todoAppCursor, createDefaultTodoAppState } from './state'
-import addTodo from './actions/addTodo';
 import changeTodoName from './actions/changeTodoName';
 import addRichTodo from './actions/addRichTodo';
+import checkTodo from './actions/checkTodo';
 
 export class AppBobflux extends b.Component<never> {
     static id: string = 'app-bob-flux'
@@ -15,41 +15,23 @@ export class AppBobflux extends b.Component<never> {
         })
     }
     render(): b.IBobrilChildren {
-        const state = flux.getState(todoAppCursor)
-        const todos = state.todos.map(t => {return b.styledDiv(
-            m.Checkbox({
-                children: t,
-                action: () => {}
-            }),
-            taskStyle
-        )});
+        const state = flux.getState(todoAppCursor);
         const richTodos = state.richTodos.map(t => {return b.styledDiv(
             m.Checkbox({
                 children: t.label,
                 checked: t.isDone,
-                action: () => {}
+                action: () => {
+                    checkTodo(t.label)
+                }
             }),
             taskStyle
         )});
         return m.Paper({
             children: [
                 b.styledDiv('Todo List', labelStyle),
-                { tag: 'p', children: 'Todos (' + state.todos.length + '):' },
-                todos,
                 { tag: 'p', children: 'Rich Todos (' + state.richTodos.length + '):' },
                 richTodos,
                 m.TextField({value: state.todoName, hintText: "Todo name", onChange: (value) => changeTodoName(value)}),
-                m.Button({
-                    children: 'Add Task',
-                    type: m.ButtonType.Raised,
-                    feature: m.Feature.Secondary,
-                    disabled: isActualTaskEmpty(state.todoName),
-                    action: () => {
-                        if (!isActualTaskEmpty(state.todoName)) {
-                            addTodo();
-                        }
-                    }
-                }),
                 m.Button({
                     children: 'Add Rich Task',
                     type: m.ButtonType.Raised,
