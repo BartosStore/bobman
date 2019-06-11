@@ -3,6 +3,7 @@ import * as flux from 'bobflux'
 import * as monitor from 'bobflux-monitor'
 import { todoAppCursor, createDefaultTodoAppState } from './state'
 import { Button } from '../components/button';
+import addTodo from './actions/addTodo';
 
 export class AppBobflux extends b.Component<never> {
     static id: string = 'app-bob-flux'
@@ -19,7 +20,11 @@ export class AppBobflux extends b.Component<never> {
             { tag: 'p', children: 'todoName: ' + state.todoName },
             { tag: 'p', children: 'Number of todos: ' + state.todos.length },
             { tag: 'p', children: 'Todos: ' },
-            todos
+            todos,
+            Button({
+                caption: "Add",
+                onHit: () => {addTodo()}
+            })
         ]
     }
 }
