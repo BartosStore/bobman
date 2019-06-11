@@ -20,6 +20,6 @@ export const todoNameCursor: flux.ICursor<string> = {
 export function createDefaultTodoAppState(): ITodoAppState {
     return {
         todos: ['wash clothes', 'clean dishes', 'lux'],
-        todoName: 'default todo name',
+        todoName: '',
     }
 }

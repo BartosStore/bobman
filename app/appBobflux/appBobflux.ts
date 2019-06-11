@@ -1,9 +1,11 @@
 import * as b from 'bobril'
 import * as flux from 'bobflux'
 import * as monitor from 'bobflux-monitor'
+import * as m from 'bobril-m'
 import { todoAppCursor, createDefaultTodoAppState } from './state'
 import { Button } from '../components/button';
 import addTodo from './actions/addTodo';
+import changeTodoName from './actions/changeTodoName';
 
 export class AppBobflux extends b.Component<never> {
     static id: string = 'app-bob-flux'
@@ -21,6 +23,7 @@ export class AppBobflux extends b.Component<never> {
             { tag: 'p', children: 'Number of todos: ' + state.todos.length },
             { tag: 'p', children: 'Todos: ' },
             todos,
+            m.TextField({value: state.todoName, hintText: "Todo name", onChange: (value) => changeTodoName(value)}),
             Button({
                 caption: "Add",
                 onHit: () => {addTodo()}
