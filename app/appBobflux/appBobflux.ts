@@ -13,6 +13,7 @@ export class AppBobflux extends b.Component<never> {
         flux.bootstrap(createDefaultTodoAppState(), {
             debugCallback: monitor.init(),
         })
+        // todo: download github data
     }
     render(): b.IBobrilChildren {
         const state = flux.getState(todoAppCursor);
@@ -26,6 +27,8 @@ export class AppBobflux extends b.Component<never> {
             }),
             taskStyle
         )});
+        // todo: display downloaded github data
+        // todo: rename todo list to issue tracker for github repo
         return m.Paper({
             children: [
                 b.styledDiv('Todo List', labelStyle),
