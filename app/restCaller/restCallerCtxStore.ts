@@ -1,5 +1,5 @@
 import * as b from 'bobril'
-import { IData, IContributor } from './restCallerTypes'
+import { IData, IContributor, Issue } from './restCallerTypes'
 import { sendRequest } from '../common/restUtils'
 
 /**
@@ -15,6 +15,13 @@ export class RestCallerCtxStore extends b.Component<IData> {
     private _eulerDojoUrl: string =
         'https://api.github.com/repos/vsobotka/euler-dojo/contributors'
 
+    private _issues: Issue[] = [
+        {title: "Incorrect padding", description: "There is incorrect padding in login form."},
+        {title: "Wrong number of decimal places", description: "Wrong calculation of heat temperature for boiler."}
+    ];
+    private _defaultTitle: string = "";
+    private _defaultDescription: string = ""
+
     constructor(data: IData) {
         super(data)
         this.loadHeatingProjectData()
@@ -28,6 +35,28 @@ export class RestCallerCtxStore extends b.Component<IData> {
         return this._contributors
     }
 
+    issues = (): Issue[] => {
+        return this._issues;
+    }
+
+    defaultTitle = (): string => {
+        return this._defaultTitle;
+    }
+
+    defaultDescription = (): string => {
+        return this._defaultDescription;
+    }
+
+    setDefaultTitle = (title: string): void => {
+        this._defaultTitle = title;
+        b.invalidate(this);
+    }
+
+    setDefaultDescription = (description: string): void => {
+        this._defaultDescription = description;
+        b.invalidate(this);
+    }
+
     loadHeatingProjectData = () => {
         this._repository = 'Heating Project'
         this._loadRepositoryData(this._heatingProjectUrl)
@@ -37,6 +66,12 @@ export class RestCallerCtxStore extends b.Component<IData> {
     loadEulerDojoData = () => {
         this._repository = 'Euler Dojo'
         this._loadRepositoryData(this._eulerDojoUrl)
+    }
+
+    addIssue = () => {
+        this._issues.push({title: this._defaultTitle, description: this._defaultDescription});
+        this._defaultTitle = "";
+        this._defaultDescription = "";
     }
 
     private _loadRepositoryData = (url: string) => {

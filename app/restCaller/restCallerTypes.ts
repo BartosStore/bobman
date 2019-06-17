@@ -7,3 +7,8 @@ export interface IContributor {
     contributions: number
     url: string
 }
+
+export type Issue = {
+    title: string,
+    description: string
+}
